@@ -2,11 +2,11 @@ import React, { useCallback, useEffect } from 'react';
 import {
   View,
   ScrollView,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';

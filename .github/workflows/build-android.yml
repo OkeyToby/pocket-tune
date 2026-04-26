@@ -1,0 +1,50 @@
+name: Build Android APK
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build APK
+        run: eas build --platform android --profile production --non-interactive --no-wait
+
+      - name: Wait for build and download APK
+        run: |
+          BUILD_URL=$(eas build:list --platform android --status finished --limit 1 --json --non-interactive | jq -r '.[0].artifacts.buildUrl')
+          curl -L "$BUILD_URL" -o pocket-tune.apk
+
+      - name: Upload APK to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: pocket-tune.apk
+          name: PocketTune ${{ github.ref_name }}
+          body: |
+            ## PocketTune ${{ github.ref_name }}
+
+            ### Installation
+            1. Download `pocket-tune.apk`
+            2. På din Android — gå til **Indstillinger → Sikkerhed → Installer ukendte apps**
+            3. Tryk på APK filen og installer
+
+            ### Hvad er nyt
+            Se commits for ændringer.

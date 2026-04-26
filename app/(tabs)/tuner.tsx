@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,

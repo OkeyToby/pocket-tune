@@ -2,11 +2,11 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   Switch,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Slider from '@react-native-community/slider';
 import { Colors } from '@/constants/Colors';
 import { ThemedText } from '@/components/ui/ThemedText';

@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 import {
   View,
   ScrollView,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,

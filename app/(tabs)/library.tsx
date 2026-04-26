@@ -2,12 +2,12 @@ import React, { useCallback, useState } from 'react';
 import {
   View,
   FlatList,
-  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   TextInput,
   Alert,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import { Colors } from '@/constants/Colors';
